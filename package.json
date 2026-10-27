@@ -1,0 +1,75 @@
+{
+  "name": "strapi-plugin-azure-sso",
+  "version": "1.0.0",
+  "description": "Azure AD (Microsoft Entra ID) single sign-on for the Strapi 5 admin panel, for Community Edition.",
+  "keywords": [
+    "strapi",
+    "strapi-plugin",
+    "strapi-5",
+    "sso",
+    "azure",
+    "azure-ad",
+    "entra-id",
+    "oidc",
+    "single-sign-on"
+  ],
+  "license": "MIT",
+  "author": "Santhosh Sivan <geethasivan246@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SanthoshSivan-Dev/strapi-plugin-azure-sso.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SanthoshSivan-Dev/strapi-plugin-azure-sso/issues"
+  },
+  "homepage": "https://github.com/SanthoshSivan-Dev/strapi-plugin-azure-sso#readme",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "source": "./admin/src/index.js",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./strapi-server": {
+      "source": "./server/src/index.js",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "watch:link": "strapi-plugin watch:link",
+    "verify": "strapi-plugin verify",
+    "test": "node --test tests/*.test.mjs",
+    "prepublishOnly": "npm test && npm run build && npm run verify"
+  },
+  "dependencies": {
+    "jose": "^5.10.0"
+  },
+  "devDependencies": {
+    "@strapi/sdk-plugin": "^6.1.1",
+    "@strapi/strapi": "^5.24.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.0",
+    "styled-components": "^6.1.0"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.24.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "strapi": {
+    "kind": "plugin",
+    "name": "azure-sso",
+    "displayName": "Azure SSO",
+    "description": "Log in to the Strapi admin panel with Azure AD (Microsoft Entra ID)."
+  }
+}
